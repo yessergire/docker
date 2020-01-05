@@ -1,0 +1,3 @@
+git clone https://github.com/docker-hy/rails-example-project ../rails-example-project
+docker build --tag clicker-app -f Dockerfile ../rails-example-project
+docker run -dp 3000:3000 clicker-app

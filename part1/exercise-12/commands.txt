@@ -1,0 +1,8 @@
+git clone https://github.com/docker-hy/frontend-example-docker ../frontend-example-docker
+docker build --tag frontend -f front-end-Dockerfile ../frontend-example-docker
+git clone https://github.com/docker-hy/backend-example-docker ../backend-example-docker
+docker build --tag backend -f back-end-Dockerfile ../backend-example-docker
+
+docker run -dp 5000:5000 frontend
+touch logs.txt
+docker run -v $(pwd)/logs.txt:/src/app/logs.txt -dp 8000:8000 backend

@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  frontend-compose:
+    image: frontend-compose
+    build:
+      context: ../frontend-example-docker
+    ports:
+      - 5000:5000
+  backend-compose:
+    image: backend-compose
+    build:
+      context: ../backend-example-docker
+    ports:
+      - 8000:8000
+    container_name: backend-compose

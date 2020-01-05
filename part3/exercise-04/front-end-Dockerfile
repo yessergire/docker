@@ -1,0 +1,15 @@
+FROM node:10.18.0-alpine3.10
+
+ENV API_URL http://localhost/api/
+
+WORKDIR /src/app
+
+COPY . ./
+
+RUN npm install && \
+    chown -R node /src/app && \
+    chmod -R u+xwr /src/app
+
+USER node
+
+CMD ["npm","start"]

@@ -1,0 +1,7 @@
+$ docker run -d --rm -it --name looper-it ubuntu:16.04 sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+$ docker exec -it looper-it bash
+root@258ce9f20db7:/# apt update
+root@258ce9f20db7:/# apt install -y curl
+root@258ce9f20db7:/# exit
+$ docker attach looper-it
+helsinki.fi

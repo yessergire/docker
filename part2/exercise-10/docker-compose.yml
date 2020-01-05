@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  frontend-compose:
+    image: frontend-compose
+    build:
+      context: ../frontend-example-docker
+    environment:
+      - API_URL=http://localhost/api
+    ports:
+      - 5000:5000
+    depends_on:
+      - backend-compose
+    container_name: frontend-compose
+  backend-compose:
+    image: backend-compose
+    build:
+      context: ../backend-example-docker
+    environment:
+      - FRONT_URL=http://localhost/
+    ports:
+      - 8000:8000
+    depends_on:
+      - cache
+      - postgres
+    environment:
+      - REDIS=cache
+      - REDIS_PORT=6379
+      - DB_USERNAME=user
+      - DB_PASSWORD=password
+      - DB_NAME=postgres_db
+      - DB_HOST=postgres
+    container_name: backend-compose
+  cache:
+    image: redis
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    container_name: redis
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres_db
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    container_name: postgres
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    container_name: nginx
+    depends_on:
+      - frontend-compose
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf

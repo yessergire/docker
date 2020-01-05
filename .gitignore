@@ -1,0 +1,12 @@
+# General
+.DS_Store
+._*
+*.swp
+**/frontend-example-docker
+**/backend-example-docker
+**/rails-example-project
+**/scaling-exercise
+**/spring-app
+**/spring-example-project
+**/database
+**/logs.txt

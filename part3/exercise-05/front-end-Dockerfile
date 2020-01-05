@@ -1,0 +1,23 @@
+FROM node:alpine as build-stage
+
+WORKDIR /src/app
+
+ENV API_URL http://localhost/api/
+
+COPY . ./
+
+RUN npm install && \
+    npm run build
+
+FROM node:slim
+
+WORKDIR /app
+
+COPY --from=build-stage /src/app/dist/* /app/
+
+RUN npm install -g serve && \
+    chown -R node .
+
+USER node
+
+CMD serve -s -l 5000 .

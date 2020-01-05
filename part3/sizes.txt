@@ -1,0 +1,18 @@
+Image sizes of exercise 2.10:
+frontend-compose                             latest              d899ab20f6b1        About a minute ago   457MB
+backend-compose                              latest              26158e23898b        3 minutes ago        360MB
+
+
+Image sizes of exercise 3.1:
+frontend-compose                             latest              113aa8c04dfb        48 minutes ago      429MB
+backend-compose                              latest              46848372152f        19 hours ago        332MB
+
+
+Image sizes of exercise 3.3:
+frontend-compose                             latest              190a8e88575a        30 minutes ago      429MB
+backend-compose                              latest              2a40f3baf6cf        31 minutes ago      333MB
+
+
+Image sizes of exercise 3.4:
+frontend-compose                             latest              c1c7909abc9c        7 seconds ago       236MB
+backend-compose                              latest              52e50d4c4f48        46 seconds ago      140MB

@@ -1,0 +1,5 @@
+Output of docker ps -a:
+98bde4de10bf        nginx               "nginx -g 'daemon of…"   17 seconds ago      Exited (0) 4 seconds ago                       jolly_goodall
+ea6d7378cb7a        nginx               "nginx -g 'daemon of…"   20 seconds ago      Exited (0) 4 seconds ago                       awesome_elion
+bd89ce2c0468        nginx               "nginx -g 'daemon of…"   51 seconds ago      Up 49 seconds              80/tcp              naughty_haslett
+
