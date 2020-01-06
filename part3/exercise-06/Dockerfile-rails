@@ -1,12 +1,11 @@
-FROM ubuntu:16.04
+FROM alpine:3.10
 
 ENV PATH /root/.rbenv/bin:/root/.rbenv/shims/:$PATH
 
 # Install packages for building ruby
-RUN apt update && apt install -y \
-        build-essential curl git zlib1g-dev libssl-dev libreadline-dev \
-        libyaml-dev libxml2-dev libxslt-dev libsqlite3-dev nodejs tzdata && \
-    rm -rf /var/lib/apt/lists/* && \
+RUN apk add --no-cache --update build-base bash linux-headers git sqlite-dev nodejs tzdata \
+                     openssl-dev readline-dev zlib-dev && \
+    rm -rf /var/cache/apk/* && \
 # Install rbenv and ruby-build
     git clone https://github.com/rbenv/rbenv.git /root/.rbenv && \
     git clone https://github.com/rbenv/ruby-build.git /root/.rbenv/plugins/ruby-build  && \
@@ -19,8 +18,13 @@ RUN apt update && apt install -y \
     echo 'gem: --no-rdoc --no-ri' >> /root/.gemrc && \
     gem environment --config-file /root/.gemrc
 
-# Copy files
-WORKDIR /src/app
+# Add new a user
+WORKDIR /app
+RUN adduser -D app && \
+    chown -R app /app && \
+    chmod -R a+wxr /root && \
+    chmod -R u+xwr /root/.rbenv
+USER app
 
 COPY . ./
 
@@ -28,9 +32,9 @@ COPY . ./
 ENV BUNDLE_SILENCE_ROOT_WARNING 1
 RUN gem install bundler && \
     bundle install && \
-    rbenv rehash && \
+    rbenv rehash
 # Rails
-    rails db:migrate
+RUN bin/rails db:migrate
 
 EXPOSE 3000
 

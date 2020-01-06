@@ -1,1 +1,10 @@
-docker-compose up
+#git clone https://github.com/docker-hy/rails-example-project ../rails-example-project
+#docker build --tag optimised-clicker-app -f Dockerfile ../rails-example-project
+#docker run -dp 3000:3000 clicker-app
+
+git clone https://github.com/yessergire/SpringApp ../spring-app
+docker build --tag optimised-spring-app -f Dockerfile-java ../spring-app
+docker run --rm -p 8080:8080 optimised-spring-app
+
+# optimised-spring-app                         latest               ed2bff5191e8        5 minutes ago       143MB
+# spring-app                                   latest               8c354af7ae44        3 hours ago         629MB

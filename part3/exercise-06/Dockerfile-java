@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.04 as build-stage
 
 RUN apt-get update && \
     apt-get -y install openjdk-8-jdk curl && \
@@ -12,4 +12,20 @@ RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apach
 
 WORKDIR /apps
 
-CMD /bin/bash
+COPY . /apps
+
+RUN mvn package
+
+FROM alpine:3.10
+
+WORKDIR /apps
+
+COPY --from=build-stage /apps/target/ /apps
+
+RUN apk add --no-cache --update bash openjdk8-jre && \
+    rm -rf /var/cache/apk/* && adduser -D app
+
+EXPOSE 8080
+
+USER app
+CMD ["/usr/bin/java", "-jar", "./MyApp-1.0-SNAPSHOT.jar"]

@@ -1,1 +1,14 @@
-echo ?
+# Build image:
+docker build --tag java-platfrom .
+
+# Example usage:
+git clone https://github.com/yessergire/SpringApp ../spring-app
+cd ../spring-app
+
+# Compile and run:
+docker run --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/apps java-platfrom mvn package
+docker run --rm -v $HOME/.m2:/root/.m2 -v $(pwd):/apps -p 8080:8080 java-platfrom java -jar target/MyApp-1.0-SNAPSHOT.jar
+
+# To compile inside a container type:
+# docker run -it -v $HOME/.m2:/root/.m2 -v $(pwd):/apps bash
+# $ mvn package
