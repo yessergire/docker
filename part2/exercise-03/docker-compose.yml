@@ -13,4 +13,6 @@ services:
       context: ../backend-example-docker
     ports:
       - 8000:8000
+    volumes:
+      - ./logs.txt:/src/app/logs.txt
     container_name: backend-compose

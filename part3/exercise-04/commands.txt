@@ -1,7 +1,13 @@
+# Clone repositories
 git clone https://github.com/docker-hy/frontend-example-docker ../frontend-example-docker
-docker build --tag frontend -f front-end-Dockerfile ../frontend-example-docker
 git clone https://github.com/docker-hy/backend-example-docker ../backend-example-docker
-docker build --tag backend -f back-end-Dockerfile ../backend-example-docker
+
+# Copy dockerfile
+cp front-end-Dockerfile ../frontend-example-docker/Dockerfile
+cp back-end-Dockerfile ../backend-example-docker/Dockerfile
+
+# Delete images
+#docker rmi frontend-compose backend-compose
 
 touch logs.txt
 docker-compose up

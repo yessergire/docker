@@ -5,7 +5,6 @@ services:
     image: frontend-compose
     build:
       context: ../frontend-example-docker
-      dockerfile: ./front-end-Dockerfile
     ports:
       - 5000:5000
     depends_on:
@@ -15,7 +14,6 @@ services:
     image: backend-compose
     build:
       context: ../backend-example-docker
-      dockerfile: ./back-end-Dockerfile
     ports:
       - 8000:8000
     depends_on:
