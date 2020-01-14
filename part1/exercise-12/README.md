@@ -5,7 +5,7 @@
 ### Exercise 12
 
 - frontend [Docerfile](front-end-Dockerfile)
-- backend [Docerfile](backend-end-Dockerfile)
+- backend [Docerfile](back-end-Dockerfile)
 
 #### Commands run
 
