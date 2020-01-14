@@ -1,4 +1,3 @@
 git clone https://github.com/docker-hy/frontend-example-docker ../frontend-example-docker
 docker build --tag frontend -f Dockerfile ../frontend-example-docker
-touch logs.txt
 docker run -d -p 5000:5000 frontend
