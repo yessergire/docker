@@ -1,5 +1,8 @@
-# Docker image builder
+# Devops with Docker [exercises](https://devopswithdocker.com/exercises/)
 
+## Part 3
+
+### Exercise 8
 Building images inside of a container.
 
 Repository in [GitHub](https://github.com/yessergire/docker-image-builder)
