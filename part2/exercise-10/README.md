@@ -2,7 +2,7 @@
 
 ## Part 2
 
-### Exercise 9
+### Exercise 10
 - frontend [Docerfile](front-end-Dockerfile)
 - backend [Docerfile](back-end-Dockerfile)
 - [docker-compose.yml](docker-compose.yml)
